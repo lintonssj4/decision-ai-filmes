@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/shared/databases/prisma.database';
 
 @Injectable()
-export class ListCriterionRepository {
+export class RemoveGenreRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getAll() {
-    const list = await this.prisma.criterion.findMany({});
-    return list;
+  async remove(id: string) {
+    const genre = await this.prisma.genre.delete({ where: { id: id } });
+    return genre;
   }
 }

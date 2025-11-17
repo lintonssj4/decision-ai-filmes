@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../shared/databases/prisma.database';
-import { UpdateCriterionDto } from '../dto/update-criterion.dto';
+import { UpdateGenreDto } from '../dto/update-genre.dto';
 
 @Injectable()
-export class UpdateCriterionRepository {
+export class UpdateGenreRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async update(id: string, data: UpdateCriterionDto) {
-    const criterion = await this.prisma.criterion.update({
+  async update(id: string, data: UpdateGenreDto) {
+    const genre = await this.prisma.genre.update({
       data,
       where: { id: id },
     });
-    return criterion;
+    return genre;
   }
 }

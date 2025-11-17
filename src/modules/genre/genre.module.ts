@@ -1,6 +1,6 @@
 import { Logger, Module } from '@nestjs/common';
-import { CriterionService } from './criterion.service';
-import { CriterionController } from './criterion.controller';
+import { GenreService } from './genre.service';
+import { GenreController } from './genre.controller';
 import * as UseCases from './use-cases';
 import * as Repositories from './repository';
 import { SharedModule } from 'src/shared/shared.module';
@@ -10,7 +10,7 @@ const repositories = Object.values(Repositories);
 
 @Module({
   imports: [SharedModule],
-  controllers: [CriterionController],
-  providers: [CriterionService, ...useCases, ...repositories, Logger],
+  controllers: [GenreController],
+  providers: [GenreService, ...useCases, ...repositories, Logger],
 })
-export class CriterionModule {}
+export class GenreModule {}
