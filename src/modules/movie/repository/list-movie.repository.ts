@@ -6,7 +6,11 @@ export class ListMovieRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAll() {
-    const list = await this.prisma.movie.findMany({});
+    const list = await this.prisma.movie.findMany({
+      include: {
+        genre: true,
+      },
+    });
     return list;
   }
 }
