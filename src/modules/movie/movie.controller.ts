@@ -34,6 +34,8 @@ export class MovieController {
   update(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
     return this.movieService.update(id, updateMovieDto);
   }
+  @Patch(':id/:favorite')
+  favorite(@Param('id') id: string, @Param('favorite') favorite: boolean) {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
