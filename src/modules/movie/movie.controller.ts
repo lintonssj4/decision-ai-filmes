@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseBoolPipe,
 } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import { UpdateMovieDto } from './dto/update-movie.dto';
@@ -35,8 +36,16 @@ export class MovieController {
     return this.movieService.update(id, updateMovieDto);
   }
   @Patch(':id/:favorite')
-  favorite(@Param('id') id: string, @Param('favorite') favorite: boolean) {
-
+  favorite(
+    @Param('id') id: string,
+    @Param('favorite', ParseBoolPipe) favorite: boolean,
+  ) {
+    return this.movieService.favorite(id, favorite);
+  }
+  @Get('favorite/list')
+  listFavorite() {
+    return this.movieService.listFavorite();
+  }
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.movieService.remove(id);
